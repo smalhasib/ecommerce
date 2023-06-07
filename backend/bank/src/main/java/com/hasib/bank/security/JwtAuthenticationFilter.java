@@ -1,6 +1,5 @@
 package com.hasib.bank.security;
 
-import com.hasib.bank.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

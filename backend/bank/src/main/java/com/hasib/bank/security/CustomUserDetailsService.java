@@ -1,4 +1,4 @@
-package com.hasib.bank.service;
+package com.hasib.bank.security;
 
 import com.hasib.bank.model.Role;
 import com.hasib.bank.model.UserEntity;
