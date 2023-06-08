@@ -19,7 +19,7 @@ public class OtpVerification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int userId;
-    private long cardNumber;
+    private long accountNumber;
     private int otp;
     private LocalDateTime expirationTime;
 }

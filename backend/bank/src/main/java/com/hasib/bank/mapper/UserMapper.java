@@ -15,8 +15,8 @@ public class UserMapper {
                 .username(entity.getUsername())
                 .accountNumber(entity.getAccountNumber())
                 .roles(entity.getRoles())
-//                .isVerified(entity.isVerified())
-//                .money(entity.getMoney())
+                .isVerified(entity.isVerified())
+                .money(entity.getMoney())
                 .build();
     }
 
@@ -31,9 +31,10 @@ public class UserMapper {
                 .password(oldUserEntity.getPassword())
                 .accountNumber(userDto.getAccountNumber())
                 .roles(userDto.getRoles())
-//                .isVerified(userDto.isVerified())
-//                .money(userDto.getMoney())
-//                .transactions(oldUserEntity.getTransactions())
+                .isVerified(userDto.isVerified())
+                .money(userDto.getMoney())
+                .sentTransactions(oldUserEntity.getSentTransactions())
+                .receivedTransactions(oldUserEntity.getReceivedTransactions())
                 .build();
     }
 }

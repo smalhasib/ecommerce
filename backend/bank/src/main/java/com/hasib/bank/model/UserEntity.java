@@ -28,11 +28,17 @@ public class UserEntity {
     private String username;
     private String password;
     private long accountNumber;
+    @Builder.Default
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles = new ArrayList<>();
-//    private boolean isVerified;
-//    private long money;
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Transaction> transactions = new ArrayList<>();
+    private boolean isVerified;
+    private double money;
+    @Builder.Default
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transaction> sentTransactions = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transaction> receivedTransactions = new ArrayList<>();
+
 }

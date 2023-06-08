@@ -19,5 +19,5 @@ public class UserDto {
     private long accountNumber;
     private List<Role> roles;
     private boolean isVerified;
-    private long money;
+    private double money;
 }

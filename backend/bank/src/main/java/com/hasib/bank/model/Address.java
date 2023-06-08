@@ -23,4 +23,18 @@ public class Address {
     private String policeStation;
     private String district;
     private String division;
+
+    public int getZonalCode() {
+        return switch (division.toLowerCase()) {
+            case "dhaka" -> 1;
+            case "barisal" -> 2;
+            case "chittagong" -> 3;
+            case "khulna" -> 4;
+            case "mymensingh" -> 5;
+            case "rajshahi" -> 6;
+            case "rangpur" -> 7;
+            case "sylhet" -> 8;
+            default -> 9;
+        };
+    }
 }

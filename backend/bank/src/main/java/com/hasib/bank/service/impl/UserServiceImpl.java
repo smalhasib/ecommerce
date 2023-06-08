@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -78,41 +77,46 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserById(int id) {
-        UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User could not be found"));
+        UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         return mapToDto(user);
     }
 
     @Override
     public UserDto updateUser(UserDto userDto, int id) {
-        UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User could not be found"));
+        UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         user = mapToEntity(userDto, user);
         return mapToDto(userRepository.save(user));
     }
 
     @Override
     public void deleteUser(int id) {
-        UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User could not be found"));
+        UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         userRepository.delete(user);
     }
 
     @Override
-    public boolean userExistById(int id) {
+    public boolean userExistsById(int id) {
         return userRepository.existsById(id);
     }
 
     @Override
-    public boolean userExistByNid(long nid) {
+    public boolean userExistsByNid(long nid) {
         return userRepository.existsByNid(nid);
     }
 
     @Override
-    public boolean userExistByEmail(String email) {
+    public boolean userExistsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
 
     @Override
-    public boolean userExistByUsername(String username) {
+    public boolean userExistsByUsername(String username) {
         return userRepository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean userExistsByAccountNumber(long accountNumber) {
+        return userRepository.existsByAccountNumber(accountNumber);
     }
 
     @Override
@@ -122,7 +126,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity getUserByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+    public UserEntity getUserByAccountNumber(long accountNumber) {
+        return userRepository.getUserEntitiesByAccountNumber(accountNumber).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 }

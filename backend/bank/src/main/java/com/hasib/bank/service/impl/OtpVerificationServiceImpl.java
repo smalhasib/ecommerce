@@ -21,9 +21,19 @@ public class OtpVerificationServiceImpl implements OtpVerificationService {
     }
 
     @Override
-    public void createOtp(int userId, int otp) {
+    public void createUserVerificationOtp(int userId, int otp) {
         OtpVerification otpVerification = OtpVerification.builder()
                 .userId(userId)
+                .otp(otp)
+                .expirationTime(LocalDateTime.now().plus(Duration.ofMinutes(2)))
+                .build();
+        otpVerificationRepository.save(otpVerification);
+    }
+
+    @Override
+    public void createAccountVerificationOtp(long accountNumber, int otp) {
+        OtpVerification otpVerification = OtpVerification.builder()
+                .accountNumber(accountNumber)
                 .otp(otp)
                 .expirationTime(LocalDateTime.now().plus(Duration.ofMinutes(2)))
                 .build();

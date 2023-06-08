@@ -17,15 +17,17 @@ public interface UserService {
 
     void deleteUser(int id);
 
-    boolean userExistById(int id);
+    boolean userExistsById(int id);
 
-    boolean userExistByNid(long nid);
+    boolean userExistsByNid(long nid);
 
-    boolean userExistByEmail(String email);
+    boolean userExistsByEmail(String email);
 
-    boolean userExistByUsername(String username);
+    boolean userExistsByUsername(String username);
+
+    boolean userExistsByAccountNumber(long accountNumber);
 
     void deleteFailedCreatedUser(UserEntity user);
 
-    UserEntity getUserByUsername(String username);
+    UserEntity getUserByAccountNumber(long accountNumber);
 }
