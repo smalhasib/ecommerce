@@ -1,3 +1,4 @@
+import Login from "@/components/Auth/Login";
 import Link from "next/link";
 import React from "react";
 
@@ -5,9 +6,7 @@ const Home = () => {
   return (
     <div>
       <ul>
-        <li>
-          <Link href="/users">Users</Link>
-        </li>
+        <h1>Hello home</h1>
       </ul>
     </div>
   );
