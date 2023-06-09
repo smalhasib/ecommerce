@@ -1,11 +1,12 @@
 package com.hasib.bank.mapper;
 
+import com.hasib.bank.dto.TransactedUserDto;
 import com.hasib.bank.dto.UserDto;
 import com.hasib.bank.model.UserEntity;
 
 public class UserMapper {
 
-    public static UserDto mapToDto(UserEntity entity) {
+    public static UserDto mapToUserDto(UserEntity entity) {
         return UserDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())
@@ -17,6 +18,15 @@ public class UserMapper {
                 .roles(entity.getRoles())
                 .isVerified(entity.isVerified())
                 .money(entity.getMoney())
+                .build();
+    }
+
+    public static TransactedUserDto mapToTransactedDto(UserEntity entity) {
+        return TransactedUserDto.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .email(entity.getEmail())
+                .accountNumber(entity.getAccountNumber())
                 .build();
     }
 

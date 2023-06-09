@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class VerifyDto {
     private int userId;
-    private long cardNumber;
+    private long accountNumber;
     private int otp;
 }

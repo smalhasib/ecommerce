@@ -109,7 +109,7 @@ public class AuthController {
             user.setAccountNumber(newAccountNumber);
             user.setMoney(1000.0);
             userService.updateUser(user, verifyDto.getUserId());
-            otpVerificationService.deleteOtp(verifyDto.getUserId());
+            otpVerificationService.deleteOtp(otpVerification.getId());
             return ResponseEntity.ok("Verification successful");
         }
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class OtpVerificationServiceImpl implements OtpVerificationService {
@@ -32,12 +33,19 @@ public class OtpVerificationServiceImpl implements OtpVerificationService {
 
     @Override
     public void createAccountVerificationOtp(long accountNumber, int otp) {
-        OtpVerification otpVerification = OtpVerification.builder()
-                .accountNumber(accountNumber)
-                .otp(otp)
-                .expirationTime(LocalDateTime.now().plus(Duration.ofMinutes(2)))
-                .build();
-        otpVerificationRepository.save(otpVerification);
+        Optional<OtpVerification> oldOtpVerification = otpVerificationRepository.findOtpVerificationByAccountNumber(accountNumber);
+        if (oldOtpVerification.isPresent()) {
+            oldOtpVerification.get().setOtp(otp);
+            oldOtpVerification.get().setExpirationTime(LocalDateTime.now().plus(Duration.ofMinutes(2)));
+            otpVerificationRepository.save(oldOtpVerification.get());
+        } else {
+            OtpVerification otpVerification = OtpVerification.builder()
+                    .accountNumber(accountNumber)
+                    .otp(otp)
+                    .expirationTime(LocalDateTime.now().plus(Duration.ofMinutes(2)))
+                    .build();
+            otpVerificationRepository.save(otpVerification);
+        }
     }
 
     @Override
@@ -49,6 +57,11 @@ public class OtpVerificationServiceImpl implements OtpVerificationService {
     @Override
     public OtpVerification getOtpVerificationByUserId(int userId) {
         return otpVerificationRepository.findOtpVerificationByUserId(userId).orElseThrow(() -> new OtpVerificationNotFoundException("Otp not found"));
+    }
+
+    @Override
+    public OtpVerification getOtpVerificationByAccountNumber(long accountNumber) {
+        return otpVerificationRepository.findOtpVerificationByAccountNumber(accountNumber).orElseThrow(() -> new OtpVerificationNotFoundException("Otp not found"));
     }
 
     @Override

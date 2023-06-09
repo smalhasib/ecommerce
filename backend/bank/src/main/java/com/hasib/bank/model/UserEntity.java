@@ -1,17 +1,18 @@
 package com.hasib.bank.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Data
 @Builder
 @Entity
+@Setter
+@Getter
 @Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,17 +29,15 @@ public class UserEntity {
     private String username;
     private String password;
     private long accountNumber;
-    @Builder.Default
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles = new ArrayList<>();
     private boolean isVerified;
     private double money;
-    @Builder.Default
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transaction> sentTransactions = new ArrayList<>();
-    @Builder.Default
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transaction> receivedTransactions = new ArrayList<>();
-
+    @JsonBackReference
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
+    private Set<Transaction> sentTransactions = new HashSet<>();
+    @JsonBackReference
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+    private Set<Transaction> receivedTransactions = new HashSet<>();
 }

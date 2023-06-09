@@ -37,15 +37,13 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionResponseDto createTransaction(TransactionRequestDto transactionRequestDto) {
-        UserEntity sender = userRepository.getUserEntitiesByAccountNumber(transactionRequestDto.getSenderAccountNumber()).orElseThrow(() -> new UserNotFoundException("Invalid sender accountNumber"));
-        UserEntity receiver = userRepository.getUserEntitiesByAccountNumber(transactionRequestDto.getReceiverAccountNumber()).orElseThrow(() -> new UserNotFoundException("Invalid receiver accountNumber"));
+        UserEntity sender = userRepository.findByAccountNumber(transactionRequestDto.getSenderAccountNumber()).orElseThrow(() -> new UserNotFoundException("Invalid receiver accountNumber"));
+        UserEntity receiver = userRepository.findByAccountNumber(transactionRequestDto.getReceiverAccountNumber()).orElseThrow(() -> new UserNotFoundException("Invalid receiver accountNumber"));
 
         if (sender.getMoney() < transactionRequestDto.getAmount()) {
+            System.out.println("not enough");
             throw new NotEnoughMoneyException("Insufficient Balance");
         }
-
-        sender.setMoney(sender.getMoney() - transactionRequestDto.getAmount());
-        receiver.setMoney(receiver.getMoney() + transactionRequestDto.getAmount());
 
         Transaction transaction = Transaction.builder()
                 .amount(transactionRequestDto.getAmount())
@@ -55,6 +53,12 @@ public class TransactionServiceImpl implements TransactionService {
                 .build();
 
         Transaction savedTransaction = transactionRepository.save(transaction);
+
+        sender.setMoney(sender.getMoney() - transactionRequestDto.getAmount());
+        receiver.setMoney(receiver.getMoney() + transactionRequestDto.getAmount());
+
+        sender.getSentTransactions().add(transaction);
+        receiver.getReceivedTransactions().add(transaction);
         userRepository.saveAll(List.of(sender, receiver));
 
         return mapToDto(savedTransaction);

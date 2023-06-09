@@ -16,5 +16,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
     Boolean existsByAccountNumber(long accountNumber);
 
-    Optional<UserEntity> getUserEntitiesByAccountNumber(long accountNumber);
+    Optional<UserEntity> findByAccountNumber(long accountNumber);
 }

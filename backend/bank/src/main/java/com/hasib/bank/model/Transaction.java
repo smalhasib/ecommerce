@@ -1,16 +1,15 @@
 package com.hasib.bank.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
 @Builder
 @Entity
+@Setter
+@Getter
 @Table(name = "transactions")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,10 +17,12 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")
     private UserEntity sender;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id")
     private UserEntity receiver;
     private long amount;

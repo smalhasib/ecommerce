@@ -3,6 +3,8 @@ package com.hasib.bank.controller;
 import com.hasib.bank.dto.TransactionRequestDto;
 import com.hasib.bank.dto.TransactionResponseDto;
 import com.hasib.bank.dto.TransactionsResponseDto;
+import com.hasib.bank.dto.VerifyDto;
+import com.hasib.bank.model.OtpVerification;
 import com.hasib.bank.model.UserEntity;
 import com.hasib.bank.service.OtpVerificationService;
 import com.hasib.bank.service.TransactionService;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @RestController
@@ -72,14 +75,10 @@ public class TransactionController {
     @PostMapping("transfer")
     public ResponseEntity<TransactionResponseDto> transferMoney(@RequestBody TransactionRequestDto transactionRequestDto) {
         TransactionResponseDto responseDto = transactionService.createTransaction(transactionRequestDto);
-        if (responseDto == null) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        } else {
-            return ResponseEntity.ok(responseDto);
-        }
+        return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("send-otp")
+    @PostMapping("send-otp")
     public ResponseEntity<String> sendOtp(@RequestBody Map<String, Integer> body) {
         long accountNumber = body.get("accountNumber");
         UserEntity user = userService.getUserByAccountNumber(accountNumber);
@@ -91,5 +90,25 @@ public class TransactionController {
         }
 
         return ResponseEntity.ok("OTP sent");
+    }
+
+    @PostMapping("verify")
+    public ResponseEntity<String> verify(@RequestBody VerifyDto verifyDto) {
+        if (!userService.userExistsByAccountNumber(verifyDto.getAccountNumber())) {
+            return new ResponseEntity<>("Account not found", HttpStatus.BAD_REQUEST);
+        }
+
+        OtpVerification otpVerification = otpVerificationService.getOtpVerificationByAccountNumber(verifyDto.getAccountNumber());
+
+        if (!LocalDateTime.now().isBefore(otpVerification.getExpirationTime())) {
+            return new ResponseEntity<>("OTP timeout!", HttpStatus.BAD_REQUEST);
+        }
+
+        if (otpVerification.getOtp() == verifyDto.getOtp()) {
+            otpVerificationService.deleteOtp(otpVerification.getId());
+            return ResponseEntity.ok("Verification successful");
+        }
+
+        return new ResponseEntity<>("Verification failed", HttpStatus.BAD_REQUEST);
     }
 }

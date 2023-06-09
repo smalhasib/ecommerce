@@ -1,6 +1,5 @@
 package com.hasib.bank.dto;
 
-import com.hasib.bank.model.UserEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,8 +9,8 @@ import java.time.LocalDateTime;
 @Builder
 public class TransactionResponseDto {
     private int id;
-    private UserEntity sender;
-    private UserEntity receiver;
+    private TransactedUserDto sender;
+    private TransactedUserDto receiver;
     private long amount;
     private LocalDateTime createdAt;
 }

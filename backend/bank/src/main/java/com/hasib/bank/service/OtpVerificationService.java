@@ -12,4 +12,6 @@ public interface OtpVerificationService {
     void deleteOtp(int id);
 
     OtpVerification getOtpVerificationByUserId(int userId);
+
+    OtpVerification getOtpVerificationByAccountNumber(long accountNumber);
 }

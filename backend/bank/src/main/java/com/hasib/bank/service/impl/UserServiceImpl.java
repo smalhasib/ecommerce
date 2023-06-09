@@ -22,8 +22,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
-import static com.hasib.bank.mapper.UserMapper.mapToDto;
 import static com.hasib.bank.mapper.UserMapper.mapToEntity;
+import static com.hasib.bank.mapper.UserMapper.mapToUserDto;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
         Page<UserEntity> userEntityPage = userRepository.findAll(pageable);
         List<UserDto> userDtoList = userEntityPage.getContent()
                 .stream()
-                .map(UserMapper::mapToDto)
+                .map(UserMapper::mapToUserDto)
                 .toList();
         return UsersResponseDto.builder()
                 .content(userDtoList)
@@ -78,14 +78,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserById(int id) {
         UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
-        return mapToDto(user);
+        return mapToUserDto(user);
     }
 
     @Override
     public UserDto updateUser(UserDto userDto, int id) {
         UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         user = mapToEntity(userDto, user);
-        return mapToDto(userRepository.save(user));
+        return mapToUserDto(userRepository.save(user));
     }
 
     @Override
@@ -127,6 +127,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity getUserByAccountNumber(long accountNumber) {
-        return userRepository.getUserEntitiesByAccountNumber(accountNumber).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return userRepository.findByAccountNumber(accountNumber).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 }

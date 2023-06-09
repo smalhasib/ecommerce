@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface OtpVerificationRepository extends JpaRepository<OtpVerification, Integer> {
     Optional<OtpVerification> findOtpVerificationByUserId(int userId);
+
+    Optional<OtpVerification> findOtpVerificationByAccountNumber(long accountNumber);
 }
