@@ -101,9 +101,9 @@ public class AuthController {
             UserDto user = userService.getUserById(verifyDto.getUserId());
             user.setVerified(true);
 
-            long newAccountNumber = generateNewAccountNumber(user.getAddress().getZonalCode());
+            long newAccountNumber = generateNewAccountNumber();
             while (userService.userExistsByAccountNumber(newAccountNumber)) {
-                newAccountNumber = generateNewAccountNumber(user.getAddress().getZonalCode());
+                newAccountNumber = generateNewAccountNumber();
             }
 
             user.setAccountNumber(newAccountNumber);
@@ -131,7 +131,8 @@ public class AuthController {
         return new ResponseEntity<>("OTP resend failed", HttpStatus.BAD_REQUEST);
     }
 
-    private long generateNewAccountNumber(int zonalCode) {
-        return Long.parseLong(String.format("%04d%02d%04d", LocalDateTime.now().getYear(), zonalCode, new Random().nextInt(9000) + 1000));
+    private long generateNewAccountNumber() {
+        Random random = new Random();
+        return Long.parseLong(String.format("%04d%02d%04d", LocalDateTime.now().getYear(), random.nextInt(10), random.nextInt(9000) + 1000));
     }
 }

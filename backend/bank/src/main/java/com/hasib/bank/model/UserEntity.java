@@ -22,21 +22,22 @@ public class UserEntity {
     private int id;
     private String name;
     private long nid;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    private String address;
     private String email;
     private String username;
     private String password;
     private long accountNumber;
+    @Builder.Default
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles = new ArrayList<>();
     private boolean isVerified;
     private double money;
+    @Builder.Default
     @JsonBackReference
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
     private Set<Transaction> sentTransactions = new HashSet<>();
+    @Builder.Default
     @JsonBackReference
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
     private Set<Transaction> receivedTransactions = new HashSet<>();

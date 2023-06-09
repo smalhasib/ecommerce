@@ -5,10 +5,8 @@ import com.hasib.bank.dto.UserDto;
 import com.hasib.bank.dto.UsersResponseDto;
 import com.hasib.bank.exception.UserNotFoundException;
 import com.hasib.bank.mapper.UserMapper;
-import com.hasib.bank.model.Address;
 import com.hasib.bank.model.Role;
 import com.hasib.bank.model.UserEntity;
-import com.hasib.bank.repository.AddressRepository;
 import com.hasib.bank.repository.RoleRepository;
 import com.hasib.bank.repository.UserRepository;
 import com.hasib.bank.service.UserService;
@@ -30,25 +28,22 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final AddressRepository addressRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, AddressRepository addressRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.addressRepository = addressRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserEntity createUser(RegisterDto registerDto) {
         Role roles = roleRepository.findByName("USER").get();
-        Address savedAddress = addressRepository.save(registerDto.getAddress());
         UserEntity user = UserEntity.builder()
                 .name(registerDto.getName())
                 .nid(registerDto.getNid())
-                .address(savedAddress)
+                .address(registerDto.getAddress())
                 .email(registerDto.getEmail())
                 .username(registerDto.getUsername())
                 .password(passwordEncoder.encode((registerDto.getPassword())))
@@ -121,7 +116,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteFailedCreatedUser(UserEntity user) {
-        addressRepository.delete(user.getAddress());
         userRepository.delete(user);
     }
 
