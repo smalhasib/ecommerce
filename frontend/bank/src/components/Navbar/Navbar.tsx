@@ -7,10 +7,13 @@ import styles from "./Navbar.module.css";
 import Modal from "../Modal/Modal";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
+import Otp from "../Auth/Otp";
 
 const Navbar = () => {
   const [showLogin, setshowLogin] = useState<boolean>(false);
   const [showReg, setshowReg] = useState<boolean>(false);
+  const [showOtp, setShowOtp] = useState<boolean>(false);
+  const [id, setId] = useState<string>("");
   return (
     <React.Fragment>
       {showLogin && (
@@ -21,7 +24,21 @@ const Navbar = () => {
 
       {showReg && (
         <Modal setshowReg={setshowReg}>
-          <Register setshowReg={setshowReg} setshowLogin={setshowLogin} />
+          <Register
+            setshowReg={setshowReg}
+            setshowLogin={setshowLogin}
+            setId={setId}
+            setShowOtp={setShowOtp}
+          />
+        </Modal>
+      )}
+      {showOtp && (
+        <Modal setshowReg={setshowReg}>
+          <Otp
+            setShowOtp={setShowOtp}
+            setshowLogin={setshowLogin}
+            id={id}
+          />
         </Modal>
       )}
       <div className="w-full flex justify-center items-center">
