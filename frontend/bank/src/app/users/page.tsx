@@ -1,13 +1,15 @@
-import Login from "@/components/Auth/Login";
-import React from "react";
+"use client";
+import { GetAllusers } from "@/redux/utils/axios";
+import React, { useEffect } from "react";
 
 const Users = () => {
-  return (
-    <div>
-      <h1>List of all users..</h1>
-      <Login/>
-    </div>
-  );
+  const getUser = async () => {
+    await GetAllusers();
+  };
+  useEffect(() => {
+    getUser();
+  }, []);
+  return <div></div>;
 };
 
 export default Users;

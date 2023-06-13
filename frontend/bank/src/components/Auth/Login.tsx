@@ -1,17 +1,20 @@
 import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import Cookies from "js-cookie"
 
 type FormValues = {
-  email: string;
+  username: string;
   password: string;
 };
 const Login = ({ setshowLogin, setshowReg }: any) => {
   const form = useForm<FormValues>();
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
-  const onSubmit = (data: FormValues) => {
-    console.log("Info ---> ", data);
+  const onSubmit = async (data: FormValues) => {
+    const res = await axios.post("http://localhost:8080/api/auth/login", data);
+    Cookies.set("accessToken", res.data.accessToken);
   };
   return (
     <React.Fragment>
@@ -26,27 +29,22 @@ const Login = ({ setshowLogin, setshowReg }: any) => {
           noValidate
         >
           <h1 className="text-2xl font-bold text-[#31ABFC] mb-5">Signin</h1>
-          <div className="w-full flex flex-col items-start">
-            <label className="text-sm font-bold text-gray-700">Email</label>
+          <div className="w-full mt-4 flex flex-col items-start">
+            <label className="text-sm font-bold text-gray-700">Username</label>
             <input
               type="text"
-              {...register("email", {
+              {...register("username", {
                 required: {
                   value: true,
-                  message: "Email should be provided",
-                },
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: "Invalid email format",
+                  message: "You should fill this field.",
                 },
               })}
               className={`w-full px-3 py-2 outline-none border-2 rounded-md mt-1 ${
-                errors.email ? "border-red-400" : "focus:border-blue-200"
+                errors.username ? "border-red-400" : "focus:border-blue-200"
               }`}
             />
             <p className="text-red-800 ml-3 text-sm mt-1">
-              {errors.email?.message}
+              {errors.username?.message}
             </p>
           </div>
           <div className="w-full flex flex-col items-start mt-4 focus:border-blue-200">
@@ -74,7 +72,7 @@ const Login = ({ setshowLogin, setshowReg }: any) => {
                 className="text-blue-600 cursor-pointer"
                 onClick={() => {
                   setshowReg(true);
-                  setshowLogin(false)
+                  setshowLogin(false);
                 }}
               >
                 Signup
