@@ -7,7 +7,7 @@ import com.hasib.bank.model.UserEntity;
 
 public interface UserService {
 
-    UserEntity createUser(RegisterDto registerDto);
+    UserDto createUser(RegisterDto registerDto);
 
     UsersResponseDto getAllUsers(int pageNumber, int pageSize);
 
@@ -27,7 +27,9 @@ public interface UserService {
 
     boolean userExistsByAccountNumber(long accountNumber);
 
-    void deleteFailedCreatedUser(UserEntity user);
+    void deleteFailedCreatedUser(UserDto userDto);
 
-    UserEntity getUserByAccountNumber(long accountNumber);
+    UserDto getUserByAccountNumber(long accountNumber);
+
+    UserDto getUserByUsername(String username);
 }

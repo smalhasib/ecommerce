@@ -2,7 +2,6 @@ package com.hasib.bank.controller;
 
 import com.hasib.bank.dto.*;
 import com.hasib.bank.model.OtpVerification;
-import com.hasib.bank.model.UserEntity;
 import com.hasib.bank.security.JwtGenerator;
 import com.hasib.bank.service.OtpVerificationService;
 import com.hasib.bank.service.UserService;
@@ -59,7 +58,7 @@ public class AuthController {
             return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
         }
 
-        UserEntity savedUser = userService.createUser(registerDto);
+        UserDto savedUser = userService.createUser(registerDto);
 
         try {
             otpVerificationService.createUserVerificationOtp(savedUser.getId(), emailService.sendOtpEmail(savedUser.getEmail()));
@@ -83,7 +82,8 @@ public class AuthController {
                         loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        return ResponseEntity.ok(new LoginResponseDto(token));
+        UserDto loggedInUser = userService.getUserByUsername(loginDto.getUsername());
+        return ResponseEntity.ok(new LoginResponseDto(token, loggedInUser));
     }
 
     @PostMapping("verify")
