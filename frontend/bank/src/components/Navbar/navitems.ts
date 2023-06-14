@@ -14,10 +14,5 @@ const navitems = [
     title: "Transactions",
     url:"/transactions"
   },
-  {
-    id: 4,
-    title: "Contact",
-    url:"contact"
-  },
 ];
 export default navitems;
