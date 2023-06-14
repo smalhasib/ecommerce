@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/public/icons/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/public/icons/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Otp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Otp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Navbar/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Navbar/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Navbar/navitems.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Navbar/navitems.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/redux/features/users/usersApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/redux/features/users/usersApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/redux/features/users/usersSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/redux/features/users/usersSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/redux/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/redux/store/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/redux/utils/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/redux/utils/axios.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,6 +97,9 @@
       <workItem from="1686531677968" duration="5407000" />
       <workItem from="1686540199097" duration="1791000" />
       <workItem from="1686635176057" duration="34000" />
+      <workItem from="1686702982249" duration="1397000" />
+      <workItem from="1686712360961" duration="2997000" />
+      <workItem from="1686744334487" duration="2438000" />
     </task>
     <servers />
   </component>

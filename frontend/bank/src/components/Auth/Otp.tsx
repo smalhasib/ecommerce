@@ -1,16 +1,15 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { MdClear } from "react-icons/md";
+import { userVerify } from "./authApi";
 
 const Otp = ({ setshowLogin, setShowOtp, id }: any) => {
-  const [otp, setOtp] = useState<number>();
+  const [otp, setOtp] = useState<string>();
+
   const otpSubmit = async () => {
-    const res = await axios.post("http://localhost:8080/api/auth/verify", {
+    const res = await userVerify({
       userId: id,
       otp: otp,
     });
-    if(res.status == 200)
-    {
+    if (res.status == 200) {
       setShowOtp(false);
       setshowLogin(true);
     }

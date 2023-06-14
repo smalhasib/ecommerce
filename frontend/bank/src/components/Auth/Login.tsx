@@ -2,7 +2,8 @@ import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import Cookies from "js-cookie"
+import { userLogin } from "./authApi";
+import Cookies from "js-cookie";
 
 type FormValues = {
   username: string;
@@ -12,9 +13,17 @@ const Login = ({ setshowLogin, setshowReg }: any) => {
   const form = useForm<FormValues>();
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
+
   const onSubmit = async (data: FormValues) => {
-    const res = await axios.post("http://localhost:8080/api/auth/login", data);
-    Cookies.set("accessToken", res.data.accessToken);
+    const res = await userLogin(data);
+    console.log(res);
+    if (res.status == 200) {
+      Cookies.set("accessToken", res.data.accessToken);
+      setshowLogin(false);
+      //  save data redux later i will do it....
+    } else {
+      alert("Something went wrong....");
+    }
   };
   return (
     <React.Fragment>
@@ -67,7 +76,7 @@ const Login = ({ setshowLogin, setshowReg }: any) => {
           </div>
           <div className="w-full flex justify-center py-1 mt-3 text-gray-600">
             <p>
-              Don't have any account, go for{" "}
+              Do not have any account, go for{" "}
               <span
                 className="text-blue-600 cursor-pointer"
                 onClick={() => {

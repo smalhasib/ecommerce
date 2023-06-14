@@ -1,7 +1,8 @@
 import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import { userRegister } from "./authApi";
+
 type FormValues = {
   name: string;
   username: string;
@@ -9,21 +10,22 @@ type FormValues = {
   email: string;
   password: string;
 };
+
 const Register = ({ setshowReg, setshowLogin, setId, setShowOtp }: any) => {
+  
   const form = useForm<FormValues>();
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
-  const onSubmit = async (data: FormValues) => {
-    const res = await axios.post(
-      "http://localhost:8080/api/auth/register",
-      data
-    );
-    console.log(res.data);
 
+  const onSubmit = async (data: FormValues) => {
+    const res = await userRegister(data);
     if (res.data.userId) {
       setId(res.data.userId);
       setShowOtp(true);
       setshowReg(false);
+    }
+    else{
+      alert("Something went wrong..")
     }
   };
 
