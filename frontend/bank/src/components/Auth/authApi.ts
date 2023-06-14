@@ -7,12 +7,12 @@ export const userLogin = async (data: object) => {
   return res;
 };
 
-export const userRegister = async(data:object)=>{
-    const res = await API.post("/register");
-    return res;
-}
+export const userRegister = async (data: object) => {
+  const res = await API.post("/register", data);
+  return res;
+};
 
-export const userVerify = async(data:object)=>{
-    const res = await API.post("/verify");
-    return res;
-}
+export const userVerify = async (data: object) => {
+  const res = await API.post("/verify",data);
+  return res;
+};

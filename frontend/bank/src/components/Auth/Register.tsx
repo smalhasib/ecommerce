@@ -7,6 +7,7 @@ type FormValues = {
   name: string;
   username: string;
   nid: string;
+  address:string,
   email: string;
   password: string;
 };
@@ -94,6 +95,24 @@ const Register = ({ setshowReg, setshowLogin, setId, setShowOtp }: any) => {
             />
             <p className="text-red-800 ml-3 text-sm mt-1">
               {errors.nid?.message}
+            </p>
+          </div>
+          <div className="w-full mt-4 flex flex-col items-start">
+            <label className="text-sm font-bold text-gray-700">Address</label>
+            <input
+              type="text"
+              {...register("address", {
+                required: {
+                  value: true,
+                  message: "You should fill this field.",
+                },
+              })}
+              className={`w-full px-3 py-2 outline-none border-2 rounded-md mt-1 ${
+                errors.address ? "border-red-400" : "focus:border-blue-200"
+              }`}
+            />
+            <p className="text-red-800 ml-3 text-sm mt-1">
+              {errors.address?.message}
             </p>
           </div>
           <div className="w-full flex flex-col mt-4 items-start">
