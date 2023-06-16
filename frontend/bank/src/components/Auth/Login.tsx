@@ -1,7 +1,6 @@
 import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { userLogin } from "./authApi";
 import Cookies from "js-cookie";
 
@@ -19,6 +18,7 @@ const Login = ({ setshowLogin, setshowReg }: any) => {
     console.log(res);
     if (res.status == 200) {
       Cookies.set("accessToken", res.data.accessToken);
+      Cookies.set("id", res.data.userDto.id);
       setshowLogin(false);
       //  save data redux later i will do it....
     } else {
