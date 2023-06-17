@@ -11,6 +11,6 @@ public class TransactionResponseDto {
     private int id;
     private TransactedUserDto sender;
     private TransactedUserDto receiver;
-    private long amount;
+    private double amount;
     private LocalDateTime createdAt;
 }

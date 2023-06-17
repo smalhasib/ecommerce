@@ -1,6 +1,7 @@
 package com.hasib.bank.controller;
 
 import com.hasib.bank.dto.*;
+import com.hasib.bank.exception.NotEnoughMoneyException;
 import com.hasib.bank.model.OtpVerification;
 import com.hasib.bank.service.OtpVerificationService;
 import com.hasib.bank.service.TransactionService;
@@ -69,9 +70,13 @@ public class TransactionController {
     }
 
     @PostMapping("transfer")
-    public ResponseEntity<TransactionResponseDto> transferMoney(@RequestBody TransactionRequestDto transactionRequestDto) {
-        TransactionResponseDto responseDto = transactionService.createTransaction(transactionRequestDto);
-        return ResponseEntity.ok(responseDto);
+    public ResponseEntity<?> transferMoney(@RequestBody TransactionRequestDto transactionRequestDto) {
+        try {
+            TransactionResponseDto responseDto = transactionService.createTransaction(transactionRequestDto);
+            return ResponseEntity.ok(responseDto);
+        } catch (NotEnoughMoneyException e) {
+            return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("send-otp")
