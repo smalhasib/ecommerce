@@ -8,5 +8,5 @@ import lombok.Data;
 public class TransactionRequestDto {
     private long senderAccountNumber;
     private long receiverAccountNumber;
-    private long amount;
+    private double amount;
 }

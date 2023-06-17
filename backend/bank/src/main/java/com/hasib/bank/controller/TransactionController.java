@@ -1,11 +1,8 @@
 package com.hasib.bank.controller;
 
-import com.hasib.bank.dto.TransactionRequestDto;
-import com.hasib.bank.dto.TransactionResponseDto;
-import com.hasib.bank.dto.TransactionsResponseDto;
-import com.hasib.bank.dto.VerifyDto;
+import com.hasib.bank.dto.*;
+import com.hasib.bank.exception.NotEnoughMoneyException;
 import com.hasib.bank.model.OtpVerification;
-import com.hasib.bank.model.UserEntity;
 import com.hasib.bank.service.OtpVerificationService;
 import com.hasib.bank.service.TransactionService;
 import com.hasib.bank.service.UserService;
@@ -73,15 +70,19 @@ public class TransactionController {
     }
 
     @PostMapping("transfer")
-    public ResponseEntity<TransactionResponseDto> transferMoney(@RequestBody TransactionRequestDto transactionRequestDto) {
-        TransactionResponseDto responseDto = transactionService.createTransaction(transactionRequestDto);
-        return ResponseEntity.ok(responseDto);
+    public ResponseEntity<?> transferMoney(@RequestBody TransactionRequestDto transactionRequestDto) {
+        try {
+            TransactionResponseDto responseDto = transactionService.createTransaction(transactionRequestDto);
+            return ResponseEntity.ok(responseDto);
+        } catch (NotEnoughMoneyException e) {
+            return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("send-otp")
     public ResponseEntity<String> sendOtp(@RequestBody Map<String, Integer> body) {
         long accountNumber = body.get("accountNumber");
-        UserEntity user = userService.getUserByAccountNumber(accountNumber);
+        UserDto user = userService.getUserByAccountNumber(accountNumber);
         try {
             otpVerificationService.createAccountVerificationOtp(accountNumber, emailService.sendOtpEmail(user.getEmail()));
         } catch (Exception e) {

@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity createUser(RegisterDto registerDto) {
+    public UserDto createUser(RegisterDto registerDto) {
         Role roles = roleRepository.findByName("USER").get();
         UserEntity user = UserEntity.builder()
                 .name(registerDto.getName())
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
                 .password(passwordEncoder.encode((registerDto.getPassword())))
                 .roles(Collections.singletonList(roles))
                 .build();
-        return userRepository.save(user);
+        return mapToUserDto(userRepository.save(user));
     }
 
     @Override
@@ -115,12 +115,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteFailedCreatedUser(UserEntity user) {
+    public void deleteFailedCreatedUser(UserDto userDto) {
+        UserEntity user = userRepository.findById(userDto.getId()).orElseThrow(() -> new UserNotFoundException("User not found"));
         userRepository.delete(user);
     }
 
     @Override
-    public UserEntity getUserByAccountNumber(long accountNumber) {
-        return userRepository.findByAccountNumber(accountNumber).orElseThrow(() -> new UserNotFoundException("User not found"));
+    public UserDto getUserByAccountNumber(long accountNumber) {
+        UserEntity user = userRepository.findByAccountNumber(accountNumber).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return mapToUserDto(user);
+    }
+
+    @Override
+    public UserDto getUserByUsername(String username) {
+        UserEntity user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return mapToUserDto(user);
     }
 }
