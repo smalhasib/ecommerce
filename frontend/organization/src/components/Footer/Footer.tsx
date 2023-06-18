@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <React.Fragment>
-      <section className="mt-5">
+      <section className="w-full flex justify-center items-center">
         <div className="w-[70%] bg-[#FAFAFA] px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <nav className="flex flex-wrap justify-center -mx-5 -my-2">
             <div className="px-5 py-2">
