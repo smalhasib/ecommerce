@@ -1,23 +1,29 @@
 import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
+import { userRegister } from "./authApi";
 
 type FormValues = {
   name: string;
   username: string;
-  nid: string;
-  address: string;
-  role: string;
+  type: string;
   email: string;
   password: string;
 };
-const Signup = ({ setShowReg, setShowLogin }: any) => {
+const Signup = ({ setShowReg, setShowLogin, setId, setShowOtp }: any) => {
   const form = useForm<FormValues>();
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
+    const res = await userRegister(data);
+    if (res.data.userId) {
+      setId(res.data.userId);
+      setShowOtp(true);
+      setShowReg(false);
+    } else {
+      alert("Something went wrong..");
+    }
   };
   return (
     <React.Fragment>
@@ -68,46 +74,10 @@ const Signup = ({ setShowReg, setShowLogin }: any) => {
               {errors.username?.message}
             </p>
           </div>
-          <div className="w-full mt-4 flex flex-col items-start">
-            <label className="text-sm font-bold text-gray-700">NID</label>
-            <input
-              type="text"
-              {...register("nid", {
-                required: {
-                  value: true,
-                  message: "You should fill this field.",
-                },
-              })}
-              className={`w-full px-3 py-2 outline-none border-2 rounded-md mt-1 ${
-                errors.nid ? "border-red-400" : "focus:border-blue-200"
-              }`}
-            />
-            <p className="text-red-800 ml-3 text-sm mt-1">
-              {errors.nid?.message}
-            </p>
-          </div>
-          <div className="w-full mt-4 flex flex-col items-start">
-            <label className="text-sm font-bold text-gray-700">Address</label>
-            <input
-              type="text"
-              {...register("address", {
-                required: {
-                  value: true,
-                  message: "You should fill this field.",
-                },
-              })}
-              className={`w-full px-3 py-2 outline-none border-2 rounded-md mt-1 ${
-                errors.address ? "border-red-400" : "focus:border-blue-200"
-              }`}
-            />
-            <p className="text-red-800 ml-3 text-sm mt-1">
-              {errors.address?.message}
-            </p>
-          </div>
           <div className="w-full flex flex-col items-start mt-4">
             <span className="text-sm font-bold text-gray-700">Role</span>
             <select
-              {...register("role", {
+              {...register("type", {
                 required: {
                   value: true,
                   message: "You should fill this field.",
@@ -116,8 +86,8 @@ const Signup = ({ setShowReg, setShowLogin }: any) => {
               className="w-full mt-2 bg-white border-2 p-2 px-2 rounded-md text-md focus:border-gray-400 focus:border-2"
             >
               <option value="">Select role</option>
-              <option value="Buyer">Buyer</option>
-              <option value="Seller">Seller</option>
+              <option value="Buyer">BUYER</option>
+              <option value="Seller">SELLER</option>
             </select>
           </div>
           <div className="w-full flex flex-col mt-4 items-start">

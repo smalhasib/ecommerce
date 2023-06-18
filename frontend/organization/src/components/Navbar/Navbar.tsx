@@ -12,6 +12,7 @@ import Signin from "../Auth/Signin";
 import Signup from "../Auth/Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "@/redux/freatures/cartSlice";
+import Otp from "../Auth/Otp";
 
 const poppins = Poppins({
   weight: "400",
@@ -23,6 +24,8 @@ const Navbar = () => {
   const [showLogin, setShowLogin] = useState<boolean>(false);
   const [showReg, setShowReg] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
+  const [showOtp, setShowOtp] = useState<boolean>(false);
+  const [id, setId] = useState<string>("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -48,7 +51,17 @@ const Navbar = () => {
       )}
       {showReg && (
         <Modal>
-          <Signup setShowReg={setShowReg} setShowLogin={setShowLogin} />
+          <Signup
+            setShowReg={setShowReg}
+            setShowLogin={setShowLogin}
+            setShowOtp={setShowOtp}
+            setId={setId}
+          />
+        </Modal>
+      )}
+      {showOtp && (
+        <Modal>
+          <Otp setShowOtp={setShowOtp} setShowLogin={setShowLogin} id={id} />
         </Modal>
       )}
       <div
@@ -87,6 +100,13 @@ const Navbar = () => {
               }`}
             >
               <Link href="/products">Products</Link>
+            </li>
+            <li
+              className={`${styles.nav_link} ${
+                pathname == "/addproducts" && styles.nav_link_active
+              }`}
+            >
+              <Link href="/addproducts">Add products</Link>
             </li>
             <li
               className={`${styles.nav_link} ${

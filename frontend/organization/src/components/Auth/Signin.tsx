@@ -1,6 +1,7 @@
 import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
+import { userLogin } from "./authApi";
 type FormValues = {
   username: string;
   password: string;
@@ -10,7 +11,16 @@ const Signin = ({ setShowLogin, setShowReg }: any) => {
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
+    const res = await userLogin(data);
+    console.log(res);
+    if (res.status == 200) {
+      //  Cookies.set("accessToken", res.data.accessToken);
+      //  Cookies.set("id", res.data.userDto.id);
+      setShowLogin(false);
+      //  save data redux later i will do it....
+    } else {
+      alert("Something went wrong....");
+    }
   };
   return (
     <React.Fragment>
