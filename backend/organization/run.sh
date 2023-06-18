@@ -10,4 +10,4 @@ fi
 # Run the mvn clean package command
 mvn clean package
 cd target
-java -jar bank-0.0.1-SNAPSHOT.jar
+java -jar organization-0.0.1-SNAPSHOT.jar

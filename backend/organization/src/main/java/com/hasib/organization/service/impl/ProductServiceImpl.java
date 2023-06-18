@@ -44,13 +44,9 @@ public class ProductServiceImpl implements ProductService {
         UserEntity seller = userRepository.findById(productDto.getSellerId()).orElseThrow(() -> new UserNotFoundException("User not found!"));
         List<Category> selectedCategories = categoryRepository.findByNameIn(productDto.getCategories());
 
-        Product product = Product.builder()
-                .name(productDto.getName())
-                .price(productDto.getPrice())
-                .quantity(productDto.getQuantity())
-                .seller(seller)
-                .categories(selectedCategories)
-                .build();
+        Product product = ProductMapper.mapToEntity(productDto);
+        product.setSeller(seller);
+        product.setCategories(selectedCategories);
 
         Product savedProduct = productRepository.save(product);
 

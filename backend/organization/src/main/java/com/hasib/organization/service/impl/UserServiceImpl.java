@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto createUser(RegisterDto registerDto) {
         List<Role> roles = new ArrayList<>(List.of(roleRepository.findByName("USER").get()));
-        if (registerDto.getType().compareToIgnoreCase("SUPPLIER") == 0) {
+        if (registerDto.getRole().compareToIgnoreCase("SUPPLIER") == 0) {
             roleRepository.findByName("SUPPLIER").ifPresent(roles::add);
         }
 

@@ -14,6 +14,8 @@ public class ProductMapper {
                 .quantity(product.getQuantity())
                 .categories(product.getCategories())
                 .name(product.getName())
+                .description(product.getDescription())
+                .imageUrl(product.getImageUrl())
                 .build();
     }
 
@@ -22,6 +24,8 @@ public class ProductMapper {
                 .name(productDto.getName())
                 .quantity(productDto.getQuantity())
                 .price(productDto.getPrice())
+                .description(productDto.getDescription())
+                .imageUrl(productDto.getImageUrl())
                 .build();
     }
 }
