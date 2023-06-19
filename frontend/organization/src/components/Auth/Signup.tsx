@@ -6,7 +6,7 @@ import { userRegister } from "./authApi";
 type FormValues = {
   name: string;
   username: string;
-  type: string;
+  role: string;
   email: string;
   password: string;
 };
@@ -77,7 +77,7 @@ const Signup = ({ setShowReg, setShowLogin, setId, setShowOtp }: any) => {
           <div className="w-full flex flex-col items-start mt-4">
             <span className="text-sm font-bold text-gray-700">Role</span>
             <select
-              {...register("type", {
+              {...register("role", {
                 required: {
                   value: true,
                   message: "You should fill this field.",
@@ -86,8 +86,8 @@ const Signup = ({ setShowReg, setShowLogin, setId, setShowOtp }: any) => {
               className="w-full mt-2 bg-white border-2 p-2 px-2 rounded-md text-md focus:border-gray-400 focus:border-2"
             >
               <option value="">Select role</option>
-              <option value="Buyer">BUYER</option>
-              <option value="Seller">SELLER</option>
+              <option value="USER">BUYER</option>
+              <option value="SELLER">SELLER</option>
             </select>
           </div>
           <div className="w-full flex flex-col mt-4 items-start">

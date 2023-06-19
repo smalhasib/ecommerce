@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bf94a269-eb23-4bb7-b9c3-7f4cc3241a61.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bf94a269-eb23-4bb7-b9c3-7f4cc3241a61.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/transactions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/transactions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/components/Auth/authApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/model/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/model/Purchase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/target/classes/com/hasib/organization/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/target/classes/com/hasib/organization/controller/AuthController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +99,7 @@
       <workItem from="1686744334487" duration="3045000" />
       <workItem from="1686767509793" duration="120000" />
       <workItem from="1686770083663" duration="65000" />
+      <workItem from="1687132989128" duration="1123000" />
     </task>
     <servers />
   </component>
