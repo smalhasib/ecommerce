@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { userVerify } from "./authApi";
 
-const Otp = ({ setshowLogin, setShowOtp, id }: any) => {
+const Otp = ({ setShowLogin, setShowOtp, id }: any) => {
   const [otp, setOtp] = useState<string>();
 
   const otpSubmit = async () => {
+    console.log("Hello");
     const res = await userVerify({
       userId: id,
       otp: otp,
     });
     if (res.status == 200) {
       setShowOtp(false);
-      setshowLogin(true);
+      setShowLogin(true);
     }
   };
   return (
@@ -33,7 +34,7 @@ const Otp = ({ setshowLogin, setShowOtp, id }: any) => {
           />
           <button
             onClick={otpSubmit}
-            className="bg-[#31ABFC] py-2 px-4 rounded-md text-white mt-4"
+            className="bg-black py-2 px-4 rounded-md text-white mt-4"
           >
             Submit
           </button>

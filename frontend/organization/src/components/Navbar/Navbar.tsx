@@ -6,13 +6,15 @@ import { BiSearchAlt2, BiUser } from "react-icons/bi";
 import { BsCart4 } from "react-icons/bs";
 import { Poppins } from "@next/font/google";
 import styles from "./navbar.module.css";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Modal from "../Modal/Modal";
 import Signin from "../Auth/Signin";
 import Signup from "../Auth/Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "@/redux/freatures/cartSlice";
 import Otp from "../Auth/Otp";
+import Cookies from "js-cookie";
+import { BiUserCircle, BiLogOut } from "react-icons/bi";
 
 const poppins = Poppins({
   weight: "400",
@@ -25,22 +27,58 @@ const Navbar = () => {
   const [showReg, setShowReg] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const [showOtp, setShowOtp] = useState<boolean>(false);
+  const [navbarColor, setNavbarColor] = useState<string>("");
+  const [drpdown, setDrpDown] = useState<boolean>(false);
   const [id, setId] = useState<string>("");
   const pathname = usePathname();
+  const router = useRouter();
 
+  let token = Cookies.get("org_accessToken");
+  let role = Cookies.get("user_role");
+
+  const handleUser = () => {
+    if (token) {
+      setDrpDown(!drpdown);
+    } else {
+      setShowLogin(true);
+    }
+  };
+
+  const profileShow = () => {
+    setDrpDown(false);
+    if (role === "USER") {
+      router.push("/profile/user");
+    } else {
+      router.push("/profile/supplier");
+    }
+  };
+
+  const logOut = () => {
+    setDrpDown(false);
+    Cookies.remove("org_accessToken");
+    Cookies.remove("user_role");
+    Cookies.remove("org_user_id");
+    router.push("/");
+  };
   useEffect(() => {
     dispatch(getCartTotal());
   }, [cart, dispatch]);
 
   // height change function for scrolling..........
-  const changeHeight = () => {
-    if (window.scrollY >= 150) {
-      setIsScroll(true);
-    } else {
-      setIsScroll(false);
-    }
-  };
-  window.addEventListener("scroll", changeHeight);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 150) {
+        setNavbarColor("shadow-md");
+      } else {
+        setNavbarColor("");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <React.Fragment>
@@ -65,9 +103,9 @@ const Navbar = () => {
         </Modal>
       )}
       <div
-        className={`w-full flex justify-center items-center fixed z-50 ${
-          isScroll ? "bg-white shadow-md transition-all" : "bg-white"
-        }`}
+        className={`w-full flex justify-center items-center fixed top-0 z-50 bg-white ${
+          pathname !== "/" && "shadow-md"
+        } ${navbarColor}`}
       >
         <div
           className={`w-[70%] flex justify-between items-center p-4 ${poppins.className}`}
@@ -101,13 +139,13 @@ const Navbar = () => {
             >
               <Link href="/products">Products</Link>
             </li>
-            <li
+            {/* <li
               className={`${styles.nav_link} ${
                 pathname == "/addproducts" && styles.nav_link_active
               }`}
             >
               <Link href="/addproducts">Add products</Link>
-            </li>
+            </li> */}
             <li
               className={`${styles.nav_link} ${
                 pathname == "/blogs" && styles.nav_link_active
@@ -132,10 +170,30 @@ const Navbar = () => {
           </ul>
           <div className="flex items-center gap-x-5">
             <BiSearchAlt2 className="text-lg text-gray-800 cursor-pointer" />
-            <BiUser
-              onClick={() => setShowLogin(true)}
-              className="text-lg text-gray-800 cursor-pointer"
-            />
+            <div className="flex flex-col">
+              <BiUser
+                onClick={handleUser}
+                className="text-lg text-gray-800 cursor-pointer"
+              />
+              {drpdown && (
+                <ul className="absolute top-20 bg-[#eee] p-2 rounded-md">
+                  <li
+                    onClick={profileShow}
+                    className="flex items-center gap-x-3 border-b-[1px] border-gray-900 cursor-pointer p-1"
+                  >
+                    <BiUserCircle />
+                    <span>Profile</span>
+                  </li>
+                  <li
+                    onClick={logOut}
+                    className="flex items-center gap-x-3 cursor-pointer p-1"
+                  >
+                    <BiLogOut />
+                    <span>Logout</span>
+                  </li>
+                </ul>
+              )}
+            </div>
             <Link href={"/cart"} className="flex">
               <BsCart4 className="text-lg text-gray-800 cursor-pointer" />
               <span className="text-xs relative bottom-2">{totalQuantity}</span>

@@ -16,6 +16,7 @@ const Signup = ({ setShowReg, setShowLogin, setId, setShowOtp }: any) => {
   const { errors } = formState;
 
   const onSubmit = async (data: FormValues) => {
+    console.log(data);
     const res = await userRegister(data);
     if (res.data.userId) {
       setId(res.data.userId);
@@ -139,7 +140,7 @@ const Signup = ({ setShowReg, setShowLogin, setId, setShowOtp }: any) => {
                   setShowReg(false);
                   setShowLogin(true);
                 }}
-                className="text-black cursor-pointer"
+                className="text-black cursor-pointer ml-2"
               >
                 Signin
               </span>

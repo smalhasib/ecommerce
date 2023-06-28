@@ -2,12 +2,24 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { AddNewProduct } from "./productApi";
+import { useMutation } from "react-query";
+import API from "@/utils/axios";
+import Cookies from "js-cookie";
+
 type productType = {
   name: string;
   description: string;
   price: number;
   url: string;
+};
+
+type dataType = {
+  name: string;
+  description: string;
+  price: number;
+  url: string;
+  quantity: number;
+  sellerId: number;
 };
 const AddProducts = () => {
   const [pic, setPic] = useState();
@@ -19,6 +31,25 @@ const AddProducts = () => {
     url: "",
   });
 
+  const clearInput = () => {
+    setProduct({
+      name: "",
+      description: "",
+      price: 0,
+      url: "",
+    });
+  };
+
+  const { isSuccess, mutate } = useMutation(({ data }) => {
+    return (
+      API.post("/product/create", data),
+      {
+        onSuccess: () => {
+          clearInput();
+        },
+      }
+    );
+  });
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
@@ -47,19 +78,19 @@ const AddProducts = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    const res = await AddNewProduct({
+  const handleSubmit = async() => {
+    const data = {
       name: product.name,
       description: product.description,
       price: product.price,
       quantity: 1,
       url: pic,
-    });
-    if (res.status == 200) {
-      router.push("/products");
-    } else {
-      alert("Something wrong");
-    }
+      sellerId: Cookies.get("org_user_id"),
+    };
+    console.log(data);
+    const res = await API.post("/product/create", data);
+    console.log(res);
+    // mutate(data);
   };
   return (
     <React.Fragment>

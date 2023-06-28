@@ -2,6 +2,8 @@ import React from "react";
 import { MdClear } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { userLogin } from "./authApi";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 type FormValues = {
   username: string;
   password: string;
@@ -10,13 +12,21 @@ const Signin = ({ setShowLogin, setShowReg }: any) => {
   const form = useForm<FormValues>();
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
+  const router = useRouter();
   const onSubmit = async (data: FormValues) => {
     const res = await userLogin(data);
-    console.log(res);
+    console.log(res.data);
     if (res.status == 200) {
-      //  Cookies.set("accessToken", res.data.accessToken);
-      //  Cookies.set("id", res.data.userDto.id);
+      Cookies.set("org_accessToken", res.data.accessToken);
+      Cookies.set("org_user_id", res.data.userDto.id);
+      Cookies.set("user_role", res.data.userDto.roles[0].name);
       setShowLogin(false);
+      console.log(res.data.userDto.roles[0].name);
+      if (res.data.userDto.roles[0].name === "USER") {
+        router.push("/profile/user");
+      } else {
+        router.push("/profile/supplier");
+      }
       //  save data redux later i will do it....
     } else {
       alert("Something went wrong....");
