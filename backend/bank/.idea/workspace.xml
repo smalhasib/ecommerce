@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bf94a269-eb23-4bb7-b9c3-7f4cc3241a61.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bf94a269-eb23-4bb7-b9c3-7f4cc3241a61.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../organization/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/model/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/model/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/target/classes/com/hasib/organization/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/target/classes/com/hasib/organization/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/util/BankLoginTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/util/BankLoginTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/organization/src/components/user_profile/EditProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/organization/src/components/user_profile/EditProfile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +50,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;bd5af1f610a12434c9128e4a399cef8a&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -100,6 +98,8 @@
       <workItem from="1686767509793" duration="120000" />
       <workItem from="1686770083663" duration="65000" />
       <workItem from="1687132989128" duration="1123000" />
+      <workItem from="1687135247936" duration="1050000" />
+      <workItem from="1687929471574" duration="2329000" />
     </task>
     <servers />
   </component>

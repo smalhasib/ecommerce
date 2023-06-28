@@ -9,13 +9,13 @@ type roleArr = {
   role: string;
 };
 type userType = {
-  accountnumber: number;
+  accountNumber: number;
   email: string;
   id: number;
   name: string;
   username: string;
-  verified: boolean;
-  role: roleArr[];
+  isVerified: boolean;
+  roles: roleArr[];
 };
 
 const EditProfile = ({ editShow, setEditShow, userData }: any) => {
@@ -24,10 +24,10 @@ const EditProfile = ({ editShow, setEditShow, userData }: any) => {
       id: userData.id,
       name: userData.name,
       username: userData.username,
-      accountnumber: userData.accountNumber,
-      role: userData.roles,
+      accountNumber: userData.accountNumber,
+      roles: userData.roles,
       email: userData.email,
-      verified: userData.verified,
+      isVerified: userData.verified,
     },
   });
   const { register, handleSubmit, formState } = form;
@@ -36,7 +36,7 @@ const EditProfile = ({ editShow, setEditShow, userData }: any) => {
 
   const { mutate } = useMutation((id, data) => {
     return (
-      API.patch(`/user/${id}/update`, data),
+      API.put(`/user/${id}/update`, data),
       {
         onSuccess: () => {
           queryClient.invalidateQueries("single-user");
@@ -108,20 +108,20 @@ const EditProfile = ({ editShow, setEditShow, userData }: any) => {
             <input
               type="number"
               // defaultValue={register.accountnumber}
-              {...register("accountnumber", {
+              {...register("accountNumber", {
                 required: {
                   value: true,
                   message: "You should fill this field.",
                 },
               })}
               className={`w-full px-3 py-2 outline-none border-2 rounded-md mt-1 ${
-                errors.accountnumber
+                errors.accountNumber
                   ? "border-red-400"
                   : "focus:border-blue-200"
               }`}
             />
             <p className="text-red-800 ml-3 text-sm mt-1">
-              {errors.accountnumber?.message}
+              {errors.accountNumber?.message}
             </p>
           </div>
 
