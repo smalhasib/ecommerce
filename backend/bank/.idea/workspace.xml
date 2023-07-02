@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/util/BankLoginTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/util/BankLoginTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/organization/src/components/user_profile/EditProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/organization/src/components/user_profile/EditProfile.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +90,7 @@
       <workItem from="1686770083663" duration="65000" />
       <workItem from="1687132989128" duration="1123000" />
       <workItem from="1687135247936" duration="1050000" />
-      <workItem from="1687929471574" duration="2329000" />
+      <workItem from="1687929471574" duration="2396000" />
     </task>
     <servers />
   </component>

@@ -4,8 +4,6 @@ import com.hasib.organization.dto.ProductDto;
 import com.hasib.organization.dto.ProductResponseDto;
 import com.hasib.organization.dto.ProductsResponseDto;
 
-import java.util.List;
-
 public interface ProductService {
     ProductResponseDto createProduct(ProductDto pokemonDto);
 
@@ -14,8 +12,6 @@ public interface ProductService {
     ProductResponseDto getProductById(int id);
 
     ProductsResponseDto getProductsBySeller(int sellerId, int pageNumber, int pageSize);
-
-    ProductsResponseDto getProductsByCategories(List<String> categories, int pageNumber, int pageSize);
 
     ProductResponseDto updateProduct(ProductDto pokemonDto, int id);
 
