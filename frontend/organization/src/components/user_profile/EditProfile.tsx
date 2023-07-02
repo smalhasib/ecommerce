@@ -1,4 +1,5 @@
 import API from "@/utils/axios";
+import Cookies from "js-cookie";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { MdClear } from "react-icons/md";
@@ -18,7 +19,7 @@ type userType = {
   roles: roleArr[];
 };
 
-const EditProfile = ({ editShow, setEditShow, userData }: any) => {
+const EditProfile = ({ setEditShow, userData }: any) => {
   const form = useForm<userType>({
     defaultValues: {
       id: userData.id,
@@ -32,21 +33,24 @@ const EditProfile = ({ editShow, setEditShow, userData }: any) => {
   });
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
+  const id = Cookies.get("org_user_id");
   const queryClient = useQueryClient();
 
-  const { mutate } = useMutation((id, data) => {
-    return (
-      API.put(`/user/${id}/update`, data),
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries("single-user");
-        },
-      }
-    );
+  const updateUser = (editData) => {
+    // console.log(data);
+    return API.put(`/user/${editData.id}/update`, editData.data);
+  };
+
+  const { mutate } = useMutation(updateUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("single-user");
+      setEditShow(false);
+    },
   });
   const onSubmit = async (data: userType) => {
-    mutate(userData.id, data);
-    console.log(data);
+    mutate({ id, data });
+    // const res = API.put(`/user/${userData.id}/update`, data);
+    // console.log(res);
   };
   return (
     <React.Fragment>
@@ -86,7 +90,7 @@ const EditProfile = ({ editShow, setEditShow, userData }: any) => {
             <label className="text-sm font-bold text-gray-700">Username</label>
             <input
               type="text"
-              // defaultValue={register.username}
+              disabled
               {...register("username", {
                 required: {
                   value: true,

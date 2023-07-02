@@ -88,7 +88,7 @@ const Signup = ({ setShowReg, setShowLogin, setId, setShowOtp }: any) => {
             >
               <option value="">Select role</option>
               <option value="USER">BUYER</option>
-              <option value="SELLER">SELLER</option>
+              <option value="SUPPLIER">SUPPLIER</option>
             </select>
           </div>
           <div className="w-full flex flex-col mt-4 items-start">
