@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import API from "@/utils/axios";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type productType = {
   name: string;
@@ -21,7 +23,7 @@ type dataType = {
   quantity: number;
   sellerId: number;
 };
-const AddProducts = () => {
+const AddProducts = ({setShow}) => {
   const [pic, setPic] = useState();
   const router = useRouter();
   const [product, setProduct] = useState<productType>({
@@ -30,7 +32,7 @@ const AddProducts = () => {
     price: 0,
     url: "",
   });
-
+// const queryClient = useQueryClient();
   const clearInput = () => {
     setProduct({
       name: "",
@@ -38,18 +40,41 @@ const AddProducts = () => {
       price: 0,
       url: "",
     });
+    setShow("addproduct");
   };
 
-  const { isSuccess, mutate } = useMutation(({ data }) => {
-    return (
-      API.post("/product/create", data),
-      {
-        onSuccess: () => {
-          clearInput();
-        },
-      }
-    );
+  const addProduct = (data) => {
+    return API.post("/product/create", data);
+  };
+  const notify = () => {
+    toast.success("Product added successfylly.", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  const { mutate } = useMutation(addProduct, {
+    onSuccess: () => {
+      // queryClient.invalidateQueries("super-hero");
+      notify();
+      clearInput();
+    },
   });
+  // const { isSuccess, mutate } = useMutation((data) => {
+  //   return (
+  //     API.post("/product/create", data),
+  //     {
+  //       onSuccess: () => {
+  //         clearInput();
+  //       },
+  //     }
+  //   );
+  // });
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
@@ -78,19 +103,19 @@ const AddProducts = () => {
     }
   };
 
-  const handleSubmit = async() => {
+  const handleSubmit = () => {
     const data = {
       name: product.name,
       description: product.description,
       price: product.price,
       quantity: 1,
-      url: pic,
+      imageUrl: pic,
       sellerId: Cookies.get("org_user_id"),
     };
-    console.log(data);
-    const res = await API.post("/product/create", data);
-    console.log(res);
-    // mutate(data);
+    // console.log(data);
+    // const res = await API.post("/product/create", data);
+    // console.log(res);
+    mutate(data);
   };
   return (
     <React.Fragment>
@@ -139,6 +164,7 @@ const AddProducts = () => {
               type="file"
               name="url"
               value={product.url}
+              placeholder={pic}
               onChange={(e) => picDetails(e.target.files[0])}
               className="w-full px-3 py-2 outline-none border-2 rounded-md mt-1"
             />
@@ -153,6 +179,7 @@ const AddProducts = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </React.Fragment>
   );
 };

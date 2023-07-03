@@ -1,6 +1,15 @@
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Sidebar = ({ setShow }) => {
+  const router = useRouter();
+  const logOut = () => {
+    Cookies.remove("org_accessToken");
+    Cookies.remove("user_role");
+    Cookies.remove("org_user_id");
+    router.push("/");
+  };
   return (
     <React.Fragment>
       <div className="h-screen fixed rounded-lg px-8 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -70,7 +79,7 @@ const Sidebar = ({ setShow }) => {
           </div>
           <div
             onClick={() => {
-              setShow("product");
+              setShow("products");
             }}
             className="flex items-center p-2 text-gray-900 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
           >
@@ -90,7 +99,10 @@ const Sidebar = ({ setShow }) => {
             <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
           </div>
 
-          <div className="flex items-center p-2 text-gray-900 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+          <div
+            onClick={logOut}
+            className="flex items-center p-2 text-gray-900 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
             <svg
               aria-hidden="true"
               className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

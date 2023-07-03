@@ -176,7 +176,7 @@ const Navbar = () => {
                 className="text-lg text-gray-800 cursor-pointer"
               />
               {drpdown && (
-                <ul className="absolute top-20 bg-[#eee] p-2 rounded-md">
+                <ul className="absolute top-20 right-[13%] border-2 shadow-md bg-white w-44 p-2 rounded-md">
                   <li
                     onClick={profileShow}
                     className="flex items-center gap-x-3 border-b-[1px] border-gray-900 cursor-pointer p-1"

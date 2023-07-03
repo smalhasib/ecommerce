@@ -28,7 +28,7 @@ const Profile = () => {
           />
         </Modal>
       )}
-      <div className="w-full flex justify-center">
+      <div className="w-full min-h-screen flex justify-center">
         <div className="w-[50%] mt-32 flex justify-center ">
           {/* img */}
           <div className="w-full flex flex-col">

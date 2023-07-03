@@ -8,7 +8,8 @@ import {
   decreaseItemQuantity,
   increaseItemQuantity,
 } from "@/redux/freatures/cartSlice";
-import Image from "next/image";
+import Cookies from "js-cookie";
+import API from "@/utils/axios";
 
 type cartType = {
   id: number;
@@ -27,17 +28,17 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCartTotal());
   }, [dispatch, cart]);
-  console.log(cart);
+  const buyerId = Cookies.get("org_user_id");
 
-  const data = cart?.map((crt: { id: number; quantity: number }) => ({
+  const purchases = cart?.map((crt: { id: number; quantity: number }) => ({
     id: crt.id,
     quantity: crt.quantity,
   }));
-  console.log(data);
 
-  const purchase = ()=>{
-    // ({data, userid})
-  }
+  const purchase = async () => {
+    const res = API.post("/purchase/create", { purchases, buyerId });
+    console.log(res);
+  };
   return (
     <React.Fragment>
       <div className="w-full min-h-screen">
@@ -52,7 +53,7 @@ const Cart = () => {
                   {/* <MdClear className="text-lg text-white bg-red-600" /> */}
                   <div className="w-full flex justify-between">
                     <img
-                      src={product.url}
+                      src={product.imageUrl}
                       alt="img"
                       className="h-[200px] w-[50%]"
                     />

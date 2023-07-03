@@ -17,9 +17,9 @@ const Signin = ({ setShowLogin, setShowReg }: any) => {
     const res = await userLogin(data);
     console.log(res.data);
     if (res.status == 200) {
-      Cookies.set("org_accessToken", res.data.accessToken);
-      Cookies.set("org_user_id", res.data.userDto.id);
-      Cookies.set("user_role", res.data.userDto.roles[0].name);
+      Cookies.set("org_accessToken", res.data.accessToken, { expires: 1 });
+      Cookies.set("org_user_id", res.data.userDto.id, { expires: 1 });
+      Cookies.set("user_role", res.data.userDto.roles[0].name, { expires: 1 });
       setShowLogin(false);
       console.log(res.data.userDto.roles[0].name);
       if (res.data.userDto.roles[0].name === "USER") {
