@@ -1,0 +1,9 @@
+.extra_div {
+  height: 25vh;
+  width: 100%;
+  background-image: url("/images/common.jpg");
+  background-position: center;
+  background-size: cover;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+}

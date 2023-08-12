@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/product/")
 public class ProductController {
@@ -40,14 +38,6 @@ public class ProductController {
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
         return ResponseEntity.ok(productService.getProductsBySeller(sellerId, pageNumber, pageSize));
-    }
-
-    @GetMapping("/by-categories")
-    public ResponseEntity<ProductsResponseDto> getProductsBySeller(
-            @RequestParam List<String> categories,
-            @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
-            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
-        return ResponseEntity.ok(productService.getProductsByCategories(categories, pageNumber, pageSize));
     }
 
     @PostMapping("create")

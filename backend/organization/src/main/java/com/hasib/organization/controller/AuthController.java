@@ -43,6 +43,7 @@ public class AuthController {
 
     @PostMapping("register")
     public ResponseEntity<RegisterResponseDto> register(@RequestBody RegisterDto registerDto) {
+        System.out.println(registerDto);
         RegisterResponseDto responseDto = new RegisterResponseDto();
         if (userService.userExistsByEmail(registerDto.getEmail())) {
             responseDto.setMessage("Duplicate Email found!");

@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "purchase_items")
+@Table(name = "purchase_items", uniqueConstraints = @UniqueConstraint(columnNames = {"product_id", "purchase_id"}))
 public class PurchaseItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

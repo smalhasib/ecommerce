@@ -125,6 +125,24 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    public TransactionsResponseDto getAllTransactionsByUserId(int userId, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<Transaction> transactionPage = transactionRepository.findAllBySenderIdOrReceiverId(userId, userId, pageable);
+        List<TransactionResponseDto> transactionDtoList = transactionPage.getContent()
+                .stream()
+                .map(TransactionMapper::mapToDto)
+                .toList();
+        return TransactionsResponseDto.builder()
+                .content(transactionDtoList)
+                .pageNumber(transactionPage.getNumber())
+                .pageSize(transactionPage.getSize())
+                .totalElements(transactionPage.getTotalElements())
+                .totalPages(transactionPage.getTotalPages())
+                .last(transactionPage.isLast())
+                .build();
+    }
+
+    @Override
     public void deleteTransaction(int id) {
         Transaction transaction = transactionRepository.findById(id).orElseThrow(() -> new TransactionNotFoundException("Transaction not found"));
         transactionRepository.delete(transaction);

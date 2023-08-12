@@ -153,7 +153,7 @@ public class PurchaseServiceImpl implements PurchaseService {
         BankTransactionRequestDto requestDto = BankTransactionRequestDto.builder()
                 .senderAccountNumber(ApplicationConstants.ORG_BANK_ACCOUNT)
                 .receiverAccountNumber(purchaseItem.getProduct().getSeller().getAccountNumber())
-                .amount(purchaseItem.getPrice() * purchaseItem.getQuantity())
+                .amount(purchaseItem.getPrice())
                 .build();
 
         ResponseEntity<BankTransactionResponseDto> bankResponse = bankClient.post()

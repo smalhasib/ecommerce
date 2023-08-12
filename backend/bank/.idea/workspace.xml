@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/bank.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/repository/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hasib/bank/service/impl/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hasib/bank/service/impl/TransactionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/model/PurchaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/model/PurchaseItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/service/impl/PurchaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/java/com/hasib/organization/service/impl/PurchaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../organization/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../organization/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/profile/SingleTransactions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/profile/SingleTransactions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/bank/src/app/transactions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/bank/src/app/transactions/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/organization/src/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/organization/src/app/cart/page.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2QuKDQXDpOpWi4jtmHFGRia9AKK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "organization-ui",
+    "last_opened_file_path": "/mnt/Work/Projects/Web/ecommerce/backend/bank",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "spring.configuration.checksum": "bd5af1f610a12434c9128e4a399cef8a",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="BankApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="bank" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hasib.bank.BankApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="292b12e4-420e-4dc1-ae9b-51cf0f48d933" name="Changes" comment="" />
+      <created>1686197906035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686197906035</updated>
+      <workItem from="1686197907207" duration="2235000" />
+      <workItem from="1686220446441" duration="728000" />
+      <workItem from="1686221199253" duration="329000" />
+      <workItem from="1686330482266" duration="26000" />
+      <workItem from="1686330882028" duration="5926000" />
+      <workItem from="1686524712636" duration="4054000" />
+      <workItem from="1686531677968" duration="5407000" />
+      <workItem from="1686540199097" duration="1791000" />
+      <workItem from="1686635176057" duration="34000" />
+      <workItem from="1686702982249" duration="1397000" />
+      <workItem from="1686712360961" duration="2997000" />
+      <workItem from="1686744334487" duration="3045000" />
+      <workItem from="1686767509793" duration="120000" />
+      <workItem from="1686770083663" duration="65000" />
+      <workItem from="1687132989128" duration="1123000" />
+      <workItem from="1687135247936" duration="1050000" />
+      <workItem from="1687929471574" duration="2396000" />
+      <workItem from="1688380074609" duration="746000" />
+      <workItem from="1688392280254" duration="156000" />
+      <workItem from="1688393304546" duration="456000" />
+      <workItem from="1691747348382" duration="1197000" />
+      <workItem from="1691766676957" duration="1077000" />
+      <workItem from="1691768261037" duration="5223000" />
+      <workItem from="1691818085574" duration="636000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

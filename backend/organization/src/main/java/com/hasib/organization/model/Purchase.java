@@ -26,7 +26,7 @@ public class Purchase {
 
     @Builder.Default
     @JsonManagedReference
-    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "purchase", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Set<PurchaseItem> purchaseItems = new HashSet<>();
 
     private double totalAmount;

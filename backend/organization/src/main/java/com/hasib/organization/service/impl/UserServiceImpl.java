@@ -80,6 +80,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUser(UserDto userDto, int id) {
+        System.out.println(userDto);
         UserEntity user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         user = mapToEntity(userDto, user);
         return mapToUserDto(userRepository.save(user));

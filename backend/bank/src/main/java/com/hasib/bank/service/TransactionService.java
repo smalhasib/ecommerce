@@ -15,5 +15,7 @@ public interface TransactionService {
 
     TransactionsResponseDto getAllTransactionsByReceiverId(int receiverId, int pageNumber, int pageSize);
 
+    TransactionsResponseDto getAllTransactionsByUserId(int userId, int pageNumber, int pageSize);
+
     void deleteTransaction(int id);
 }

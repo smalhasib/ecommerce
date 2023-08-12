@@ -14,10 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -82,7 +79,8 @@ public class AuthController {
                         loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        UserDto loggedInUser = userService.getUserByUsername(loginDto.getUsername());
+
+UserDto loggedInUser = userService.getUserByUsername(loginDto.getUsername());
         return ResponseEntity.ok(new LoginResponseDto(token, loggedInUser));
     }
 
@@ -107,7 +105,7 @@ public class AuthController {
             }
 
             user.setAccountNumber(newAccountNumber);
-            user.setMoney(1000.0);
+            user.setMoney(10000.0);
             userService.updateUser(user, verifyDto.getUserId());
             otpVerificationService.deleteOtp(otpVerification.getId());
             return ResponseEntity.ok("Verification successful");

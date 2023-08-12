@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Builder
 @Entity
 @Setter
@@ -24,11 +21,6 @@ public class Product {
     private String imageUrl;
     private double price;
     private double quantity;
-
-    @Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "product_categories", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
-    private List<Category> categories = new ArrayList<>();
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER)

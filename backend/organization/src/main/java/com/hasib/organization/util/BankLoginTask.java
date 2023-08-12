@@ -30,6 +30,7 @@ public class BankLoginTask {
                 .toEntity(BankLoginResponseDto.class)
                 .subscribe(response -> {
                     ApplicationConstants.BANK_TOKEN = Objects.requireNonNull(response.getBody()).getAccessToken();
+                    System.out.println(" ------ Bank login successful ------ ");
                 }, System.out::println);
     }
 }

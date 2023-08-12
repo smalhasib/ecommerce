@@ -1,0 +1,20 @@
+.nav_link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #526d82;
+  transition: width 0.3s;
+}
+.nav_link:hover::after {
+  width: 100%;
+}
+
+.nav_link_active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #526d82;
+  transition: width 0.3s;
+}

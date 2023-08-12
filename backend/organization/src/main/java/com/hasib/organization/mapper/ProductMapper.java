@@ -12,7 +12,6 @@ public class ProductMapper {
                 .seller(UserMapper.mapToUserDto(product.getSeller()))
                 .price(product.getPrice())
                 .quantity(product.getQuantity())
-                .categories(product.getCategories())
                 .name(product.getName())
                 .description(product.getDescription())
                 .imageUrl(product.getImageUrl())
