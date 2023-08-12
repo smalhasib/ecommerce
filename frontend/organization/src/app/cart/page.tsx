@@ -10,6 +10,7 @@ import {
 } from "@/redux/freatures/cartSlice";
 import Cookies from "js-cookie";
 import API from "@/utils/axios";
+import { useRouter } from "next/navigation";
 
 type cartType = {
   id: number;
@@ -20,6 +21,7 @@ type cartType = {
   url: string;
 };
 const Cart = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { cart, totalQuantity, totalPrice } = useSelector(
     (state) => state.allCart
@@ -31,13 +33,16 @@ const Cart = () => {
   const buyerId = Cookies.get("org_user_id");
 
   const purchases = cart?.map((crt: { id: number; quantity: number }) => ({
-    id: crt.id,
+    productId: crt.id,
     quantity: crt.quantity,
   }));
 
   const purchase = async () => {
-    const res = API.post("/purchase/create", { purchases, buyerId });
-    console.log(res);
+    console.log({ purchases, buyerId })
+    const res = await API.post("/purchase/create", { purchases, buyerId });
+    if(res.status === 201){
+      window.location.reload();
+    }
   };
   return (
     <React.Fragment>

@@ -58,6 +58,15 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getAllTransactionsByReceiverId(receiverId, pageNumber, pageSize));
     }
 
+    @GetMapping("{userId}/user")
+    public ResponseEntity<TransactionsResponseDto> getTransactionsByUserId(
+            @PathVariable int userId,
+            @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ) {
+        return ResponseEntity.ok(transactionService.getAllTransactionsByUserId(userId, pageNumber, pageSize));
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<TransactionResponseDto> getTransaction(@PathVariable int id) {
         return ResponseEntity.ok(transactionService.getTransactionById(id));

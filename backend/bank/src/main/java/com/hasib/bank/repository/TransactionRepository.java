@@ -9,4 +9,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     Page<Transaction> findAllBySenderId(int senderId, Pageable pageable);
 
     Page<Transaction> findAllByReceiverId(int receiverId, Pageable pageable);
+
+    Page<Transaction> findAllBySenderIdOrReceiverId(int senderId, int receiverId, Pageable pageable);
 }

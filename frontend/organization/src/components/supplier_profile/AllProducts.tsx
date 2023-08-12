@@ -44,7 +44,7 @@ const AllProducts = () => {
     return <Loader />;
   }
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full min-h-screen flex flex-col items-center">
       <div className="w-[75%] ml-40 flex items-center justify-start">
         <h1 className="text-3xl font-bold text-gray-600 mt-10">Products</h1>
       </div>

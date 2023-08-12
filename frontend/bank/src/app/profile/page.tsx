@@ -10,7 +10,6 @@ import { fetchUser } from "@/redux/features/user/userSlice";
 const Profile = () => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
-  console.log(user);
   const router = useRouter();
   useEffect(() => {
     const token = Cookies.get("accessToken");
@@ -45,7 +44,7 @@ const Profile = () => {
                 </svg>
               </div>
               <div>
-                <span className="block text-2xl font-bold">1000 tk</span>
+                <span className="block text-2xl font-bold">{user.user.money}</span>
                 <span className="block text-gray-500">Money left</span>
               </div>
             </div>
@@ -92,7 +91,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <SingleTransactions />
+      <SingleTransactions id = {user.user.id}/>
     </React.Fragment>
   );
 };
